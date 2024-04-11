@@ -51,11 +51,11 @@ class LoginController implements ActionInterface
                 $response->setResponseData(json_encode(['isLogined' => true]));
             } else {
                 $loginErrors[self::PASSWORD_FIELDNAME] = "Not correct password";
-                $responseData = ['isLogined' => false];
-                $response->setResponseData(json_encode(['isLogined' => false]));
+                $this->sessionManager::setLogined(false);
+                $response->setResponseData(json_encode(['isLogined' => false, 'match' => $hashedPassword . ' ' . $user->getPassword()]));
             }
         } else {
-            $loginErrors[self::LOGIN_FIELD_NAME] = "User with " . $userLogin . " login not found";
+            $loginErrors[self::LOGIN_FIELD_NAME] = sprintf("User with login %s not found", $userLogin);
             $this->sessionManager::setLogined(false);
             $response->setResponseData(json_encode(['isLogined' => false]));
         }

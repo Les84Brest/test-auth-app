@@ -8,4 +8,6 @@ interface ResponseInterface
 {
     public function template(string $name, array $vars = []): void;
     public function render(): void;
+    public function setLayout(string $layout = 'layout'): void;
+    public function addLayoutVars($vars): void;
 }
