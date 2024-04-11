@@ -1,0 +1,17 @@
+{
+    "name": "alex/session-auth",
+    "description": "Authorization usin cookie and session",
+    "autoload": {
+        "psr-4": {
+            "TestApp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aliaksei Semianiuk",
+            "email": "seman17061984@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
