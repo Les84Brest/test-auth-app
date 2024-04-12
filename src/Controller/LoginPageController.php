@@ -7,17 +7,17 @@ namespace TestApp\Controller;
 use TestApp\Api\RequestInterface;
 use TestApp\Api\ResponseInterface;
 use TestApp\Helper\RenderHelper;
-use TestApp\Session\SessionManager;
+
 
 class LoginPageController extends AbstractPageController
 {
 
-    private RenderHelper $renderHelper;
+    // private RenderHelper $renderHelper;
 
     public function __construct()
     {
         parent::__construct();
-        $this->renderHelper = new RenderHelper();
+        // $this->renderHelper = new RenderHelper();
     }
 
     public function __invoke(RequestInterface $request, ResponseInterface $response): ResponseInterface
