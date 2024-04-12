@@ -8,6 +8,31 @@ document.addEventListener('DOMContentLoaded', function () {
     if (loginFormNode) {
         new Form(loginFormNode, 'sitelogin');
     }
+
+    //sign out
+
+    const signOutBtn = document.querySelector('[data-button-type="signOut"]');
+    if (signOutBtn) {
+        signOutBtn.addEventListener("click", async function (e) {
+            const queryUrl = new URL('sitelogout', window.origin);
+            const payload = { logOut: true };
+            const response = await fetch(queryUrl.href, {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (response.ok) {
+                const { status = false } = await response.json();
+
+                if (status) {
+                    location.reload();
+                }
+            }
+        });
+    }
 })
 
 
