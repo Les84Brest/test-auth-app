@@ -1,4 +1,9 @@
-<?php require_once __DIR__ . '/' . '../base/header.php'; ?>
+<?php 
+// require_once __DIR__ . '/' . '../base/header.php';
+/** @var  $errorMessages */
+/** @var $oldData */
+/** @var $renderHelper */
+?>
 
 <main class="main">
 
@@ -16,9 +21,9 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-login" class="form-input" type="text" name="login" placeholder="Введите логин">
+                                <input id="user-login" class="form-input" type="text" name="login" placeholder="Введите логин" <?=$renderHelper->renderOldData('login', $oldData) ?> >
                             </div>
-                            <span class="input-block__error">Неверный логин</span>
+                            <?= $renderHelper->renderErrorMessage('login', $errorMessages) ?>
                         </div>
                         <div class="input-block">
                             <div class="input-block__label">
@@ -27,8 +32,9 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-password" class="form-input" type="password" name="password" placeholder="Введите пароль">
+                                <input id="user-password" class="form-input" type="password" name="password" placeholder="Введите пароль" <?=$renderHelper->renderOldData('password', $oldData) ?> >
                             </div>
+                            <?= $renderHelper->renderErrorMessage('password', $errorMessages) ?>
                         </div>
                         <div class="input-block">
 
@@ -47,7 +53,7 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-login" class="form-input" type="text" name="login" placeholder="Введите логин">
+                                <input id="user-login" class="form-input" type="text" name="register-login" placeholder="Введите логин">
                             </div>
                         </div>
                         <div class="input-block">
@@ -58,7 +64,7 @@
                             </div>
                             <div class="input-block__input">
                                 <!-- In case when input has email type it enables HTML5 validation -->
-                                <input id="user-email" class="form-input" type="text" name="email" placeholder="Введите email">
+                                <input id="user-email" class="form-input" type="text" name="register-email" placeholder="Введите email">
                             </div>
                         </div>
                         <div class="input-block">
@@ -68,7 +74,7 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-name" class="form-input" type="text" name="name" placeholder="Введите имя">
+                                <input id="user-name" class="form-input" type="text" name="register-name" placeholder="Введите имя">
                             </div>
                         </div>
                         <div class="input-block">
@@ -78,7 +84,7 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-password" class="form-input" type="password" name="password" placeholder="Введите пароль">
+                                <input id="user-password" class="form-input" type="register-password" name="password" placeholder="Введите пароль">
                             </div>
                         </div>
                         <div class="input-block">
@@ -88,7 +94,7 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-rep-password" class="form-input" type="password" name="password-repeat" placeholder="Повторите пароль">
+                                <input id="user-rep-password" class="form-input" type="password" name="register-password-repeat" placeholder="Повторите пароль">
                             </div>
                         </div>
                         <div class="input-block submit">
@@ -101,4 +107,4 @@
     </section>
 </main>
 
-<?php require_once __DIR__ . '/' . '../base/footer.php'; ?>
+<?php /*require_once __DIR__ . '/' . '../base/footer.php';*/ ?>

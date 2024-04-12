@@ -11,4 +11,5 @@ interface RequestInterface
     public function getParams(): array;
     public function getQuery(): ?string;
     public function getQueryParams(): array;
+    public function getRequestJSON(): array | null;
 }

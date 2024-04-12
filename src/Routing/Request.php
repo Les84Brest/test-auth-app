@@ -33,6 +33,18 @@ class Request implements RequestInterface
         return parse_url($this->getServer('REQUEST_URI'));
     }
 
+    public function getRequestJSON(): array | null
+    {
+        $jsonInput = file_get_contents('php://input');
+        $jsonData = json_decode($jsonInput, true);
+
+        if (is_array($jsonData)) {
+            return $jsonData;
+        } else {
+            return null;
+        }
+    }
+
     public function getPath(): string
     {
         $uri = $this->getUri();
@@ -48,10 +60,12 @@ class Request implements RequestInterface
     {
         return $this->params[$param] ?? null;
     }
+
     public function getParams(): array
     {
         return $this->params ?? [];
     }
+
     public function getQuery(): ?string
     {
         $uri = $this->getUri();
