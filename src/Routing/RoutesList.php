@@ -7,6 +7,7 @@ namespace TestApp\Routing;
 use TestApp\Api\RouterInterface;
 use TestApp\Controller\AboutPageController;
 use TestApp\Controller\Auth\LoginController;
+use TestApp\Controller\Auth\LogOutController;
 use TestApp\Controller\Auth\RegistrationController;
 use TestApp\Controller\BlogPageController;
 use TestApp\Controller\HomePageController;
@@ -26,6 +27,7 @@ class RoutesList
         //POST routes
         $router->post('/siteregistration', RegistrationController::class);
         $router->post('/sitelogin', LoginController::class);
+        $router->post('/sitelogout', LogOutController::class);
 
         //404
         $router->pageNotFound(PageNotFoundController::class);
