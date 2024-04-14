@@ -15,7 +15,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="/accets/css/style.min.css">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
         <header class="header">
             <div class="header__container">
                 <div class="header__logo logo-ibg">
-                    <img src="./img/some-logo.svg" alt="Логотип сайта">
+                    <img src="./accets/img/some-logo.svg" alt="Логотип сайта">
                 </div>
                 <div class="header__menu">
                     <nav>
@@ -55,7 +55,7 @@
             <div class="footer__body">Тестовое задание Семенюк Алексей Николаевич &copy; 2024</div>
         </footer>
     </div>
-    <script src="./js/app.js"></script>
+    <script src="./accets/js/app.js"></script>
 </body>
 
 </html>

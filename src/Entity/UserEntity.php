@@ -65,10 +65,10 @@ class UserEntity
     public function getUserData(): array
     {
         return [
-            "login" => $this->login,
-            "name" => $this->name,
-            "email" => $this->email,
-            "password" => $this->password,
+            "login" => $this->getLogin(),
+            "name" => $this->getName(),
+            "email" => $this->getEmail(),
+            "password" => $this->getPassword(),
         ];
     }
 }

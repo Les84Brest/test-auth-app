@@ -14,12 +14,19 @@ use TestApp\Session\SessionManager;
 abstract class AbstractAuthController implements ActionInterface
 {
 
-    protected $sessionManager;
+    protected SessionManager $sessionManager;
+    protected UserModel $userModel;
 
     public function __construct()
     {
         $this->sessionManager = SessionManager::getInstance();
+        $this->registerUserModel();
     }
 
     abstract public function __invoke(RequestInterface $request, ResponseInterface $response): ResponseInterface;
+
+    private function registerUserModel(): void
+    {
+        $this->userModel = new UserModel();
+    }
 }

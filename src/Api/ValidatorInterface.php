@@ -6,5 +6,5 @@ namespace TestApp\Api;
 
 interface ValidatorInterface
 {
-    public function validate(string $data, array $validationRules): array;
+    public function validate(string $data, array $validationRules, mixed $dataToMatch = null): array;
 }

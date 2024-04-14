@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace TestApp\Routing;
 
-
-
 class ApiResponse extends Response
 {
     private $responseData = null;

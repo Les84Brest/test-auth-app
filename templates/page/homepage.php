@@ -2,7 +2,7 @@
 
     <section class="section hero">
         <div class="hero__image">
-            <img src="./img/hero-bg.jpg" alt="Hero секция">
+            <img src="./accets/img/hero-bg.jpg" alt="Hero секция">
         </div>
     </section>
 

@@ -1,5 +1,4 @@
-<?php 
-// require_once __DIR__ . '/' . '../base/header.php';
+<?php
 /** @var  $errorMessages */
 /** @var $oldData */
 /** @var $renderHelper */
@@ -21,7 +20,7 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-login" class="form-input" type="text" name="login" placeholder="Введите логин" <?=$renderHelper->renderOldData('login', $oldData) ?> >
+                                <input id="user-login" class="form-input" type="text" name="login" placeholder="Введите логин" <?= $renderHelper->renderOldData('login', $oldData) ?>>
                             </div>
                             <?= $renderHelper->renderErrorMessage('login', $errorMessages) ?>
                         </div>
@@ -32,7 +31,7 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-password" class="form-input" type="password" name="password" placeholder="Введите пароль" <?=$renderHelper->renderOldData('password', $oldData) ?> >
+                                <input id="user-password" class="form-input" type="password" name="password" placeholder="Введите пароль" <?= $renderHelper->renderOldData('password', $oldData) ?>>
                             </div>
                             <?= $renderHelper->renderErrorMessage('password', $errorMessages) ?>
                         </div>
@@ -53,8 +52,9 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-login" class="form-input" type="text" name="register-login" placeholder="Введите логин">
+                                <input id="user-login" class="form-input" type="text" name="registerLogin" placeholder="Введите логин" <?= $renderHelper->renderOldData('registerLogin', $oldData) ?>>
                             </div>
+                            <?= $renderHelper->renderErrorMessage('registerLogin', $errorMessages) ?>
                         </div>
                         <div class="input-block">
                             <div class="input-block__label">
@@ -64,8 +64,9 @@
                             </div>
                             <div class="input-block__input">
                                 <!-- In case when input has email type it enables HTML5 validation -->
-                                <input id="user-email" class="form-input" type="text" name="register-email" placeholder="Введите email">
+                                <input id="user-email" class="form-input" type="text" name="registerEmail" placeholder="Введите email" <?= $renderHelper->renderOldData('registerEmail', $oldData) ?>>
                             </div>
+                            <?= $renderHelper->renderErrorMessage('registerEmail', $errorMessages) ?>
                         </div>
                         <div class="input-block">
                             <div class="input-block__label">
@@ -74,8 +75,9 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-name" class="form-input" type="text" name="register-name" placeholder="Введите имя">
+                                <input id="user-name" class="form-input" type="text" name="registerName" placeholder="Введите имя" <?= $renderHelper->renderOldData('registerName', $oldData) ?>>
                             </div>
+                            <?= $renderHelper->renderErrorMessage('registerName', $errorMessages) ?>
                         </div>
                         <div class="input-block">
                             <div class="input-block__label">
@@ -84,8 +86,9 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-password" class="form-input" type="register-password" name="password" placeholder="Введите пароль">
+                                <input id="user-password" class="form-input" type="password" name="registerPassword" placeholder="Введите пароль" <?= $renderHelper->renderOldData('registerPassword', $oldData) ?>>
                             </div>
+                            <?= $renderHelper->renderErrorMessage('registerPassword', $errorMessages) ?>
                         </div>
                         <div class="input-block">
                             <div class="input-block__label">
@@ -94,8 +97,9 @@
                                 </label>
                             </div>
                             <div class="input-block__input">
-                                <input id="user-rep-password" class="form-input" type="password" name="register-password-repeat" placeholder="Повторите пароль">
+                                <input id="user-rep-password" class="form-input" type="password" name="registerPasswordRepeat" placeholder="Повторите пароль" <?= $renderHelper->renderOldData('registerPasswordRepeat', $oldData) ?>>
                             </div>
+                            <?= $renderHelper->renderErrorMessage('registerPasswordRepeat', $errorMessages) ?>
                         </div>
                         <div class="input-block submit">
                             <input type="submit" name="register-submit-button" class="btn primary" value="Регистрация">
@@ -106,5 +110,3 @@
         </div>
     </section>
 </main>
-
-<?php /*require_once __DIR__ . '/' . '../base/footer.php';*/ ?>
