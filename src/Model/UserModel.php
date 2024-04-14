@@ -6,7 +6,6 @@ namespace TestApp\Model;
 
 use TestApp\Api\UserInterface;
 use TestApp\Entity\UserEntity;
-use TestApp\Helper\AuthHelper;
 use TestApp\Helper\DatabaseHelper;
 
 class UserModel implements UserInterface
@@ -60,12 +59,42 @@ class UserModel implements UserInterface
 
         return true;
     }
+
     public function deleteUser(string $login): bool
     {
+        $db = $this->helper::getDatabase();
+        $users = $db['users'];
+
+        unset($users[$login]);
+
+
+        $db['users'] = $users;
+        $this->helper::writeDatabase($db);
+
         return true;
     }
-    public function updateUser(UserEntity $user): bool
+
+    public function updateUser(UserEntity $user, string $login): bool
     {
+        $db = $this->helper::getDatabase();
+        $users = $db['users'];
+
+        unset($users[$login]);
+
+        $userLogin = $user->getLogin();
+        $userData = $user->getUserData();
+        unset($userData['login']);
+        // $userData = array_filter($userData, function ($key) {
+        //     if ($key === 'login') {
+        //         return false;
+        //     }
+
+        //     return true;
+        // }, ARRAY_FILTER_USE_KEY);
+        $users[$userLogin] = $userData;
+        $db['users'] =  $users;
+        $this->helper::writeDatabase($db);
+
         return true;
     }
 
