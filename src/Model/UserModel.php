@@ -60,10 +60,21 @@ class UserModel implements UserInterface
 
         return true;
     }
+    
     public function deleteUser(string $login): bool
     {
+        $db = $this->helper::getDatabase();
+        $users = $db['users'];
+        $filteredUsers = array_filter($users, function ($key) use ($login): bool {
+            return $key === $login ? false : true;
+        }, ARRAY_FILTER_USE_KEY);
+
+        $db['users'] = $filteredUsers;
+        $this->helper::writeDatabase($db);
+
         return true;
     }
+
     public function updateUser(UserEntity $user): bool
     {
         return true;

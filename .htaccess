@@ -14,8 +14,16 @@ Options -Indexes
     RewriteRule ^(.*)$ index.php [L,QSA]
 </IfModule>
 
-<Files "database.json">
-    Deny from all
-</Files>
+# <Files "database.json">
+#     # Deny from all
+#     Require all denied
+# </Files>
 
 
+# <FilesMatch ^/scr/>
+#     Require all denied
+# </FilesMatch>
+
+<FilesMatch ".+/src/.+\.(php|json)$">
+    Require all denied
+</FilesMatch>
