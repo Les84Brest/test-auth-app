@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
             if (response.ok) {
-                const { status = false } = await response.json();
+                const { status  } = await response.json();
 
                 if (status) {
                     location.reload();

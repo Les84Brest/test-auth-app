@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TestApp\Helper;
 
-class AuthHelper
+class ConfigHelper
 {
 
     private  $appConfig;
@@ -19,7 +19,9 @@ class AuthHelper
     {
         return $this->appConfig['passwordSalt'];
     }
-    public function getDbPath(){
+
+    public function getDbPath()
+    {
         return $this->appConfig['dbPath'];
     }
 }

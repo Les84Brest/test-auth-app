@@ -1,6 +1,6 @@
 <main class="main">
     <div class="mini-photo">
-        <img src="./img/page-header-bg.jpg" alt="Фото на странице">
+        <img src="./accets/img/page-header-bg.jpg" alt="Фото на странице">
     </div>
     <section class="section home-content">
         <div class="home-content__container">

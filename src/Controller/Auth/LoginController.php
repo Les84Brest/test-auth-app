@@ -6,7 +6,7 @@ namespace TestApp\Controller\Auth;
 
 use TestApp\Api\RequestInterface;
 use TestApp\Api\ResponseInterface;
-use TestApp\Helper\AuthHelper;
+use TestApp\Helper\ConfigHelper;
 use TestApp\Helper\Validator;
 use TestApp\Model\UserModel;
 
@@ -15,13 +15,10 @@ class LoginController extends AbstractAuthController
     const LOGIN_FIELD_NAME = 'login';
     const PASSWORD_FIELDNAME = 'password';
 
-    private $userModel;
-
 
     public function __construct()
     {
         parent::__construct();
-        $this->registerUserModel();
     }
 
     public function __invoke(RequestInterface $request, ResponseInterface $response): ResponseInterface
@@ -62,8 +59,8 @@ class LoginController extends AbstractAuthController
         $user = $this->userModel->getUser($userLogin);
         if ($user) {
 
-            $helper = new AuthHelper();
-            $hashedPassword = md5($userPassword . $helper->getPasswordSalt());
+            $helper = new ConfigHelper();
+            $hashedPassword = md5($helper->getPasswordSalt() . $userPassword);
 
             if ($hashedPassword == $user->getPassword()) {
                 $this->sessionManager::setLogined(true);
@@ -88,10 +85,5 @@ class LoginController extends AbstractAuthController
         }
 
         return $response;
-    }
-
-    private function registerUserModel(): void
-    {
-        $this->userModel = new UserModel();
     }
 }

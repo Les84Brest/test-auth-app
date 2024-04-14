@@ -12,5 +12,5 @@ interface UserInterface
     public function createUser(UserEntity $user): bool;
     public function deleteUser(string $login): bool;
     public function updateUser(UserEntity $user): bool;
-    public function userExists(string $login): bool;
+    public function ifUserExists(string $login): bool;
 }
