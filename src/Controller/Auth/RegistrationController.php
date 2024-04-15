@@ -93,11 +93,13 @@ class RegistrationController extends AbstractAuthController
             $validationErrors[self::LOGIN_FIELD_NAME] = $loginValidationStatus['errorMessage'];
         }
         //Name validation
-        $nameValidationStatus = $validator->validate($registerLogin, [
+
+        $nameValidationStatus = $validator->validate($registerName, [
             Validator::NOT_EMPTY => true,
             Validator::MIN_LENGTH => 2,
-            Validator::CONTAINS_SPACES_ONLY => true
+            // Validator::CONTAINS_SPACES_ONLY => true
         ]);
+
         if (!$nameValidationStatus['isValid']) {
             $isValid = false;
             $validationErrors[self::NAME_FIELD_NAME] = $nameValidationStatus['errorMessage'];
@@ -117,7 +119,7 @@ class RegistrationController extends AbstractAuthController
         $passwordValidationStatus = $validator->validate($registerPassword, [
             Validator::NOT_EMPTY => true,
             Validator::MIN_LENGTH => 6,
-            Validator::IS_PASSWORD => true
+            Validator::IS_PASSWORD => true,
         ]);
         if (!$passwordValidationStatus['isValid']) {
             $isValid = false;

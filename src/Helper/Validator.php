@@ -27,8 +27,9 @@ class Validator implements ValidatorInterface
         $data = trim($data);
         $dataToMatch = $dataToMatch ? trim($dataToMatch) :  $dataToMatch;
 
+
         foreach ($validationRules as $key => $value) {
-            $isValid = match ($key) {
+            $validationResult= match ($key) {
                 self::NOT_EMPTY => $this->validateNotEmpty($data, $validationErrors),
                 self::MIN_LENGTH => $this->validateMinLength($data, $value, $validationErrors),
                 self::IS_EMAIL => $this->validateEmail($data, $validationErrors),
@@ -37,6 +38,7 @@ class Validator implements ValidatorInterface
                 self::CONTAINS_SPACES_ONLY => $this->validateContainsSpacesOnly($data,  $validationErrors),
                 self::CONTAINS_SPACES => $this->validateContainsSpaces($data, $validationErrors)
             };
+            $isValid = $isValid ? $validationResult : $isValid;
         }
 
         return ['isValid' => $isValid, 'errorMessage' => implode('. ', $validationErrors)];
@@ -44,6 +46,7 @@ class Validator implements ValidatorInterface
 
     private function validateNotEmpty(string $data, array &$validationErrors): bool
     {
+
         if (empty($data)) {
             $validationErrors[] = 'Пустые значения недопустимы';
             return false;
@@ -99,7 +102,7 @@ class Validator implements ValidatorInterface
     private function validateContainsSpaces($data, &$validationErrors): bool
     {
         if (preg_match("/\s+/i", $data)) {
-            $validationErrors[] = 'Значение не должно содержать пробелов';
+            $validationErrors[] = 'Значение не должно содержать пробелы';
             return false;
         }
         return true;

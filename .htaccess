@@ -2,11 +2,6 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    # RewriteCond %{REQUEST_URI} !^/public/
-    # RewriteRule ^(.*)$ public/ [L]
-
-    # RewriteCond %{REQUEST_URI} /img/
-    # RewriteRule ^(.*)$ public/img/ [L]
 
     RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule ^(.+) $1 [L]
@@ -14,16 +9,10 @@ Options -Indexes
     RewriteRule ^(.*)$ index.php [L,QSA]
 </IfModule>
 
-# <Files "database.json">
-#     # Deny from all
-#     Require all denied
-# </Files>
+<Files "database.json">
+    Require all denied
+</Files>
 
-
-# <FilesMatch ^/scr/>
-#     Require all denied
-# </FilesMatch>
-
-<FilesMatch ".+/src/.+\.(php|json)$">
+<FilesMatch ".+/src/.+\.php$">
     Require all denied
 </FilesMatch>

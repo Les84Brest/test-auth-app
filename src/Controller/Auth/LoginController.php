@@ -31,36 +31,44 @@ class LoginController extends AbstractAuthController
 
         //initial data validation
         $validator = new Validator;
-        $validationRules = [Validator::NOT_EMPTY => true];
+        $loginValidationStatus = $validator->validate($userLogin, [
+            Validator::NOT_EMPTY => true,
+            Validator::MIN_LENGTH => 6,
+            // Validator::CONTAINS_SPACES_ONLY => true,
+            Validator::CONTAINS_SPACES => true,
+        ]);
 
-        $loginValidationStatus = $validator->validate($userLogin, $validationRules);
         if (!$loginValidationStatus['isValid']) {
             $loginErrors[self::LOGIN_FIELD_NAME] = $loginValidationStatus['errorMessage'];
         }
 
-        $passValidationStatus = $validator->validate($userPassword, $validationRules);
-        if (!$passValidationStatus['isValid']) {
-            $loginErrors[self::PASSWORD_FIELDNAME] = $loginValidationStatus['errorMessage'];
-        }
+        $passValidationStatus = $validator->validate($userPassword, [
+            Validator::NOT_EMPTY => true,
+            Validator::MIN_LENGTH => 6,
+            Validator::IS_PASSWORD => true,
+        ]);
 
+        if (!$passValidationStatus['isValid']) {
+            $loginErrors[self::PASSWORD_FIELDNAME] = $passValidationStatus['errorMessage'];
+        }
 
         if (sizeof($loginErrors)) {
             // in case when we have errors on initial data validaton 
             // terminate login process with errors
             $this->sessionManager::setLogined(false);
             $this->sessionManager::setLoginErrors($loginErrors);
+            $this->sessionManager::setOldData($loginData);
             $response->setResponseData(json_encode(['isLogined' => false]));
 
             return $response;
         }
 
-
         // login process
-        $user = $this->userModel->getUser($userLogin);
+        $user = $this->userModel->getUser(trim($userLogin));
         if ($user) {
 
             $helper = new ConfigHelper();
-            $hashedPassword = md5($helper->getPasswordSalt() . $userPassword);
+            $hashedPassword = md5($helper->getPasswordSalt() . trim($userPassword));
 
             if ($hashedPassword == $user->getPassword()) {
                 $this->sessionManager::setLogined(true);

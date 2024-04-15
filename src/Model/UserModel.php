@@ -84,13 +84,7 @@ class UserModel implements UserInterface
         $userLogin = $user->getLogin();
         $userData = $user->getUserData();
         unset($userData['login']);
-        // $userData = array_filter($userData, function ($key) {
-        //     if ($key === 'login') {
-        //         return false;
-        //     }
 
-        //     return true;
-        // }, ARRAY_FILTER_USE_KEY);
         $users[$userLogin] = $userData;
         $db['users'] =  $users;
         $this->helper::writeDatabase($db);
