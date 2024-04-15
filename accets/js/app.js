@@ -63,22 +63,9 @@ class Form {
             window.location.reload();
         }
 
-        // if (response.status == 'error') {
-        //     this.handleServerError(response);
-        // }
-
     }
 
     handleServerError(response) {
-        // const { fields } = response;
-        // const messageText = Object.entries(fields).reduce((acc, cur) => {
-        //     const [key, val] = cur;
-        //     return acc += `${key} - ${val} <br/>`;
-        // }, '')
-
-        // this.snackbar.open(TYPE_ERROR, messageText);
-        // this.formNode.reset();
-        // this.formNode.formSubmit.disabled = true;
         console.log('%cserver error', 'padding: 5px; background: hotpink; color: black;');
     }
     async sendFormData(formData) {
